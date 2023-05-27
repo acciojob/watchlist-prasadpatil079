@@ -30,12 +30,12 @@ public class MovieService {
         movieRepository.addMovieDirectorPair(movie, director);
     }
 
-    public Movie getMovieByName(String name) {
+    public Movie getMovieByName(String name) throws MovieNotFoundException {
         Optional<Movie> movieOpt=movieRepository.getMovie(name);
         if(movieOpt.isPresent()){
             return movieOpt.get();
         }
-        throw new RuntimeException(name);
+        throw new MovieNotFoundException(name);
     }
 
     public Director getDirectorByName(String name) {

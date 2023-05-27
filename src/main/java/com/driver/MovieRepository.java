@@ -11,7 +11,7 @@ public class MovieRepository {
     private Map<String,Movie> movieData=new HashMap<>();
     private Map<String,Director> directoryData=new HashMap<>();
 
-    private Map<String, ArrayList<String>> pair=new HashMap<>();
+    private Map<String, ArrayList<String>> movieDirectorpair=new HashMap<>();
     public void addNewMovie(Movie movie) {
         movieData.put(movie.getName(),movie);
     }
@@ -22,9 +22,9 @@ public class MovieRepository {
 
     public void addMovieDirectorPair(String movie, String director) {
 
-        ArrayList<String> movies=pair.getOrDefault(director,new ArrayList<String>());
+        ArrayList<String> movies=movieDirectorpair.getOrDefault(director,new ArrayList<String>());
         movies.add(movie);
-        pair.put(director,movies);
+        movieDirectorpair.put(director,movies);
     }
 
     public Optional<Movie> getMovie(String movie) {
@@ -42,7 +42,7 @@ public class MovieRepository {
     }
 
     public List<String> getMoviesByDirectorName(String director) {
-        return pair.getOrDefault(director,new ArrayList<>());
+        return movieDirectorpair.getOrDefault(director,new ArrayList<>());
 
     }
 
@@ -51,7 +51,7 @@ public class MovieRepository {
     }
     public void deleteDirector(String director) {
         directoryData.remove(director);
-        pair.remove(director);
+        movieDirectorpair.remove(director);
     }
     public void deleteMovies(String mov) {
         movieData.remove(mov);

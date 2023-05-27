@@ -19,27 +19,4 @@ public class Director {
         this.imdbRatings = imdbRatings;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getDurationInMin() {
-        return numberOfMovies;
-    }
-
-    public void setDurationInMin(Integer durationInMin) {
-        this.numberOfMovies = numberOfMovies;
-    }
-
-    public Double getRatings() {
-        return imdbRatings;
-    }
-
-    public void setRatings(Double ratings) {
-        this.imdbRatings = imdbRatings;
-    }
 }

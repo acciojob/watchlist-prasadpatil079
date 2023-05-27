@@ -14,33 +14,34 @@ public class MovieController {
 
     private MovieService movieService=new MovieService();
 
-    @PostMapping("/add-movies")
+    @PostMapping("/add-movie")
     public ResponseEntity<String> addMovie(@RequestBody Movie movie){
         movieService.addMovie(movie);
-        return new ResponseEntity<>("Movie is added", HttpStatus.CREATED);
+        return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
     @PostMapping("/add-director")
-    public ResponseEntity<String> addDirectory(@RequestBody Director director){
+    public ResponseEntity<String> addDirector(@RequestBody Director director){
         movieService.addDirectory(director);
-        return new ResponseEntity<>("Directory is added", HttpStatus.CREATED);
+        return new ResponseEntity<>("success", HttpStatus.CREATED);
     }
     @PutMapping("/add-movie-director-pair")
     public ResponseEntity<String>addMovieDirectorPair(@RequestParam String movie,@RequestParam String director) {
-
        try {
            movieService.addMovieDirectorPair(movie, director);
            return new ResponseEntity<>("New pair added successfully", HttpStatus.CREATED);
        }catch(Exception e){
-           return new ResponseEntity<>("student teacher not found", HttpStatus.NOT_FOUND);
+           return new ResponseEntity<>("movie not found", HttpStatus.NOT_FOUND);
        }
     }
     @GetMapping("/get-movie-by-name/{name}")
     public ResponseEntity<Movie>getMovieByName(@PathVariable String name){
+        Movie movie = movieService.getMovieByName(name);
         try {
-            Movie movie = movieService.getMovieByName(name);
             return new ResponseEntity<>(movie, HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+        }catch(MovieNotFoundException e) {
+            // MovieNotFoundException i=new MovieNotFoundException();
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
         }
     }
     @GetMapping("/get-director-by-name/{name}")
