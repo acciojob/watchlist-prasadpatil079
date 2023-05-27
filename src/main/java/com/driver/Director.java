@@ -8,15 +8,15 @@ import lombok.Setter;
 public class Director {
     private String name;
     private Integer numberOfMovies;
-    private Double imdbRatings ;
+    private Double imdbRating ;
 
     public Director() {
     }
 
-    public Director(String name, Integer numberOfMovies, Double imdbRatings) {
+    public Director(String name, Integer numberOfMovies, Double imdbRating) {
         this.name = name;
         this.numberOfMovies= numberOfMovies;
-        this.imdbRatings = imdbRatings;
+        this.imdbRating = imdbRating;
     }
 
 }

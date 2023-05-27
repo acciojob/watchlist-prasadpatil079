@@ -7,16 +7,16 @@ import lombok.Setter;
 @Setter
 public class Movie {
     private String name;
-    private Integer durationInMin;
-    private Double imdbRatings;
+    private Integer durationInMinutes;
+    private Double imdbRating;
 
     public Movie() {
     }
 
-    public Movie(String name, Integer durationInMin, Double imdbRatings) {
+    public Movie(String name, Integer durationInMinutes, Double imdbRating) {
         this.name = name;
-        this.durationInMin = durationInMin;
-        this.imdbRatings = imdbRatings;
+        this.durationInMinutes = durationInMinutes;
+        this.imdbRating = imdbRating;
     }
 }
 
